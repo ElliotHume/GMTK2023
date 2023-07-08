@@ -39,7 +39,6 @@ public class Obstacle : MonoBehaviour
 
     void Update()
     {
-        
         if (_playerInRange && !_isBeingGrabbed && Input.GetKeyDown("e"))
         {
             Pickup();
@@ -58,11 +57,14 @@ public class Obstacle : MonoBehaviour
     public void Pickup()
     {
         if (_player == null) _player = Player.Instance;
+        if (_player.isHoldingObstacle) return;
         outline.enabled = true;
         _isBeingGrabbed = true;
         transform.position = _player.pickupPoint.position;
         transform.rotation = _player.pickupPoint.rotation;
         transform.parent = _player.pickupPoint;
+
+        _player.isHoldingObstacle = true;
         
         OnPickup.Invoke();
     }
@@ -75,6 +77,8 @@ public class Obstacle : MonoBehaviour
         transform.position = _player.placePoint.position;
         transform.rotation = _player.placePoint.rotation;
         transform.parent = null;
+        
+        _player.isHoldingObstacle = false;
         OnPlace.Invoke();
     }
 
