@@ -164,7 +164,9 @@ MonoBehaviour:
   spinningModel: {fileID: 1634823198431339209}
   spinningMultiplier: 100
   bounceMultiplier: 1
-  breakEffectPrefab: {fileID: 0}
+  breakEffectPrefab: {fileID: 6522152114310683227, guid: fe92eb3105e49114799894846cfd3c31, type: 3}
+  renderer: {fileID: 1650223458234517313}
+  damagedTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   OnBreak:
     m_PersistentCalls:
       m_Calls: []

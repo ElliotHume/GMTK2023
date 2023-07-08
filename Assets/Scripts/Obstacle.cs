@@ -12,6 +12,9 @@ public class Obstacle : MonoBehaviour
     public GameObject brokenPrefab;
 
     public Outline outline;
+
+    public MeshRenderer renderer;
+    public Color damagedTint = Color.red;
     
     public UnityEvent OnPickup;
     public UnityEvent OnPlace;
@@ -85,6 +88,12 @@ public class Obstacle : MonoBehaviour
         if (health <= 0)
         {
             Break();
+        }
+
+        if (health <= 2 && renderer != null)
+        {
+            Debug.Log("Change to damaged tint");
+            renderer.material.color = damagedTint;
         }
 
         return damageDealt;

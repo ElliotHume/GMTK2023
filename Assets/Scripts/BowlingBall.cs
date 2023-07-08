@@ -14,6 +14,9 @@ public class BowlingBall : MonoBehaviour
     public float bounceMultiplier = 1f;
 
     public GameObject breakEffectPrefab;
+
+    public MeshRenderer renderer;
+    public Color damagedTint = Color.gray;
     
     public UnityEvent OnBreak;
     public UnityEvent OnCollide;
@@ -33,6 +36,11 @@ public class BowlingBall : MonoBehaviour
     public int damage;
     [HideInInspector]
     public int health;
+
+    void Reset()
+    {
+        renderer = GetComponent<MeshRenderer>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -171,6 +179,11 @@ public class BowlingBall : MonoBehaviour
         } else if (tag == "Despawn")
         {
             Destroy(gameObject);
+        }
+
+        if (damage <= 0 && renderer != null)
+        {
+            renderer.material.color = damagedTint;
         }
     }
 
