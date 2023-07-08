@@ -5,6 +5,8 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour
 {
 
+    public float turnSpeed = 10f;
+    
     public float floorHeight = 0.25f;
     public Animator animator;
     public GameObject characterRoot;
@@ -16,43 +18,46 @@ public class Player : MonoBehaviour
     public bool canMove => !_isKnockedDown && !_isGettingUp; 
 
     public UnityEvent OnHitByBowlingBall;
+
+    private Vector3 _movementDirection;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        _movementDirection = transform.forward;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 direction = Vector3.zero;
+        Vector3 inputDirection = Vector3.zero;
         bool moving = Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d");
         if (Input.GetKey("w"))
         {
-            direction += transform.forward;
+            inputDirection += transform.forward;
         }
         if (Input.GetKey("s"))
         {
-            direction -= transform.forward;
+            inputDirection -= transform.forward;
         }
         if (Input.GetKey("d"))
         {
-            direction += transform.right;
+            inputDirection += transform.right;
         }
         if (Input.GetKey("a"))
         {
-            direction -= transform.right;
+            inputDirection -= transform.right;
         }
         
         animator.SetBool("Running", moving && !_isKnockedDown);
         animator.SetBool("KnockedDown", _isKnockedDown);
 
-        if (canMove)
+        if (canMove && moving)
         {
-            characterController.Move( direction * Time.deltaTime);
-            if (direction != Vector3.zero)
-                characterRoot.transform.rotation = Quaternion.LookRotation(direction);
+            _movementDirection = Vector3.Lerp(_movementDirection, inputDirection, turnSpeed * Time.deltaTime).normalized;
+            characterController.Move( _movementDirection * Time.deltaTime);
+            if (_movementDirection != Vector3.zero)
+                characterRoot.transform.rotation = Quaternion.LookRotation(_movementDirection);
         }
         else
         {

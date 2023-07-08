@@ -55,7 +55,7 @@ public class NPC : MonoBehaviour
         
         if (pickupSlider != null)
         {
-            pickupSlider.gameObject.SetActive(isKnockedOver && _pickupProgress != 0);
+            pickupSlider.gameObject.SetActive(!isDead && isKnockedOver && _pickupProgress != 0);
             pickupSlider.value = _pickupProgress / timeToPickup;
         }
 
@@ -83,6 +83,8 @@ public class NPC : MonoBehaviour
             OnDeath.Invoke();
             if (deathPrefab != null)
                 Instantiate(deathPrefab, transform.position, transform.rotation);
+            if (pickupSlider != null)
+                pickupSlider.gameObject.SetActive(false);
         }
     }
 

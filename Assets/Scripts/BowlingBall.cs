@@ -25,6 +25,7 @@ public class BowlingBall : MonoBehaviour
     private bool _isGrounded;
     private Vector3 _gutterDirection;
     private Vector3 _ricochetDirection;
+    private float _floorHeight;
 
     [HideInInspector]
     public float speed;
@@ -75,9 +76,9 @@ public class BowlingBall : MonoBehaviour
         spinningModel.transform.LookAt(movementDirection);
         spinningModel.transform.RotateAround(spinningModel.transform.position, spinningModel.transform.right, spinningMultiplier * stats.speed * Time.deltaTime);
 
-        if (!_isGrounded)
+        if (!_isGrounded || (_floorHeight != 0 && transform.position.y > _floorHeight))
         {
-            transform.position -= Vector3.up * Time.deltaTime;
+            transform.position -= Vector3.up * Time.deltaTime * 3f;
         }
     }
 
@@ -112,6 +113,7 @@ public class BowlingBall : MonoBehaviour
         if (tag == "Floor")
         {
             _isGrounded = true;
+            _floorHeight = transform.position.y;
         }
         else if (tag == "Gutter")
         {
@@ -121,8 +123,17 @@ public class BowlingBall : MonoBehaviour
         } else if (tag == "Obstacle")
         {
             OnCollide.Invoke();
-            
-            // TODO: Deal damage to Obstacle, if no more damage is remaining, bounce away
+            if (damage > 0)
+            {
+                Obstacle obstacle = collisionGO.GetComponent<Obstacle>();
+                int damageDealt = obstacle.Hit(damage);
+                damage -= damageDealt;
+
+                if (damage <= 0)
+                {
+                    Ricochet(collision.contacts[0].normal);
+                }
+            }
         } else if (tag == "NPC")
         {
             OnCollide.Invoke();
