@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -13,13 +14,12 @@ public class Obstacle : MonoBehaviour
     public UnityEvent OnPlace;
     public UnityEvent OnHit;
     public UnityEvent OnBreak;
-
-
+    
     [HideInInspector]
     public int health;
-    
-    
-    
+
+    private bool _isBeingGrabbed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,8 +51,22 @@ public class Obstacle : MonoBehaviour
         OnBreak.Invoke();
         if (brokenPrefab != null)
             Instantiate(brokenPrefab, transform.position, transform.rotation);
-        Destroy(this);
+        Destroy(gameObject);
     }
-    
-    
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject == Player.Instance.gameObject)
+        {
+            if (Input.GetKey("e") && !_isBeingGrabbed)
+            {
+                _isBeingGrabbed = true;
+                transform.parent = Player.Instance.characterRoot.transform;
+            } else if (_isBeingGrabbed && !Input.GetKey("e"))
+            {
+                _isBeingGrabbed = false;
+                transform.parent = null;
+            }
+        }
+    }
 }

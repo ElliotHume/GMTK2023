@@ -123,16 +123,17 @@ public class BowlingBall : MonoBehaviour
         } else if (tag == "Obstacle")
         {
             OnCollide.Invoke();
+            
             if (damage > 0)
             {
                 Obstacle obstacle = collisionGO.GetComponent<Obstacle>();
                 int damageDealt = obstacle.Hit(damage);
                 damage -= damageDealt;
-
-                if (damage <= 0)
-                {
-                    Ricochet(collision.contacts[0].normal);
-                }
+            }
+            
+            if (damage <= 0)
+            {
+                Ricochet(collision.contacts[0].normal);
             }
         } else if (tag == "NPC")
         {

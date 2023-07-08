@@ -5,6 +5,8 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour
 {
 
+    public static Player Instance;
+
     public float turnSpeed = 10f;
     
     public float floorHeight = 0.25f;
@@ -21,9 +23,11 @@ public class Player : MonoBehaviour
 
     private Vector3 _movementDirection;
     
+    
     // Start is called before the first frame update
     void Start()
     {
+        Player.Instance = this;
         _movementDirection = transform.forward;
     }
 
