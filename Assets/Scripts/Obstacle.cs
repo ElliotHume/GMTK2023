@@ -11,6 +11,7 @@ public class Obstacle : MonoBehaviour
 
     public GameObject brokenPrefab;
     
+    public UnityEvent OnPickup;
     public UnityEvent OnPlace;
     public UnityEvent OnHit;
     public UnityEvent OnBreak;
@@ -19,6 +20,8 @@ public class Obstacle : MonoBehaviour
     public int health;
 
     private bool _isBeingGrabbed;
+    private bool _isGrounded;
+    private float _floorHeight;
 
     // Start is called before the first frame update
     void Start()
@@ -26,8 +29,30 @@ public class Obstacle : MonoBehaviour
         health = stats.health;
     }
 
+    void Update()
+    {
+        if (_isBeingGrabbed && !Input.GetKey("e"))
+        {
+            Place();
+        }
+        
+        // if (!_isGrounded || (_floorHeight != 0 && transform.position.y > _floorHeight))
+        // {
+        //     transform.position -= Vector3.up * Time.deltaTime * 3f;
+        // }
+    }
+
+    public void Pickup()
+    {
+        OnPickup.Invoke();
+        _isBeingGrabbed = true;
+        transform.parent = Player.Instance.characterRoot.transform;
+    }
+    
     public void Place()
     {
+        _isBeingGrabbed = false;
+        transform.parent = null;
         OnPlace.Invoke();
     }
 
@@ -60,12 +85,8 @@ public class Obstacle : MonoBehaviour
         {
             if (Input.GetKey("e") && !_isBeingGrabbed)
             {
-                _isBeingGrabbed = true;
-                transform.parent = Player.Instance.characterRoot.transform;
-            } else if (_isBeingGrabbed && !Input.GetKey("e"))
-            {
-                _isBeingGrabbed = false;
-                transform.parent = null;
+                Pickup();
+                
             }
         }
     }

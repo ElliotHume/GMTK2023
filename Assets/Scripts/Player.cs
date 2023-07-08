@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 
     public static Player Instance;
 
+    public float speed = 1f;
     public float turnSpeed = 10f;
     
     public float floorHeight = 0.25f;
@@ -59,7 +60,7 @@ public class Player : MonoBehaviour
         if (canMove && moving)
         {
             _movementDirection = Vector3.Lerp(_movementDirection, inputDirection, turnSpeed * Time.deltaTime).normalized;
-            characterController.Move( _movementDirection * Time.deltaTime);
+            characterController.Move( _movementDirection * (speed * Time.deltaTime));
             if (_movementDirection != Vector3.zero)
                 characterRoot.transform.rotation = Quaternion.LookRotation(_movementDirection);
         }
