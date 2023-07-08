@@ -147,12 +147,8 @@ public class BowlingBall : MonoBehaviour
             npc.Hit();
             
             damage -= 1;
-
-            if (damage <= 0)
-            {
-                Ricochet(collision.contacts[0].normal);
-            }
-
+            
+            Ricochet(collision.contacts[0].normal);
         } else if (tag == "BowlingBall")
         {
             OnCollide.Invoke();
@@ -160,11 +156,8 @@ public class BowlingBall : MonoBehaviour
             BowlingBall ball = collisionGO.GetComponent<BowlingBall>();
             
             damage -= ball.damage;
-            
-            if (damage <= 0)
-            {
-                Ricochet(collision.contacts[0].normal);
-            }
+
+            Ricochet(collision.contacts[0].normal);
         } else if (tag == "Player")
         {
             OnCollide.Invoke();
@@ -173,11 +166,8 @@ public class BowlingBall : MonoBehaviour
             player.BowlingBallHit();
             
             damage -= 1;
-
-            if (damage <= 0)
-            {
-                Ricochet(collision.contacts[0].normal);
-            }
+            
+            Ricochet(collision.contacts[0].normal);
         } else if (tag == "Despawn")
         {
             Destroy(gameObject);
