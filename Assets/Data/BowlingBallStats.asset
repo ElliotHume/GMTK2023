@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d581891396ce497aa5c55a9a81b8c287, type: 3}
   m_Name: BowlingBallStats
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 5
   damage: 1
   health: 1

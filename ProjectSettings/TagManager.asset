@@ -8,6 +8,8 @@ TagManager:
   - Gutter
   - BowlingBall
   - Obstacle
+  - Despawn
+  - Floor
   layers:
   - Default
   - TransparentFX
