@@ -304,6 +304,7 @@ GameObject:
   - component: {fileID: 5750025314247822512}
   - component: {fileID: 5750025314247822513}
   - component: {fileID: 5750025314247822475}
+  - component: {fileID: 501085282}
   m_Layer: 0
   m_Name: WoodBlock
   m_TagString: Obstacle
@@ -318,7 +319,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5750025314247822514}
-  m_LocalRotation: {x: -0, y: -0.2271712, z: -0, w: 0.9738549}
+  m_LocalRotation: {x: 0, y: -0.22716966, z: 0, w: 0.9738552}
   m_LocalPosition: {x: 4.92, y: 0.877, z: 9.94}
   m_LocalScale: {x: 1.2916758, y: 0.254383, z: 0.28172737}
   m_ConstrainProportionsScale: 0
@@ -391,6 +392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 30c9bae347762624cb89536c424916dc, type: 2}
   brokenPrefab: {fileID: 0}
+  outline: {fileID: 501085282}
   OnPickup:
     m_PersistentCalls:
       m_Calls:
@@ -470,3 +472,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &501085282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5750025314247822514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

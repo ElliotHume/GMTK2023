@@ -48,7 +48,7 @@ public class NPC : MonoBehaviour
         if (isDead)
             return;
         
-        if (isKnockedOver && Input.GetKey("e") && Vector3.Distance(player.transform.position, transform.position) < pickupRadius && player.canMove)
+        if (isKnockedOver && Input.GetKey("q") && Vector3.Distance(player.transform.position, transform.position) < pickupRadius && player.canMove)
         {
             _pickupProgress += Time.deltaTime;
         }

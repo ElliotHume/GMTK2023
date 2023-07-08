@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public Animator animator;
     public GameObject characterRoot;
     public CharacterController characterController;
+    public Transform pickupPoint, placePoint;
     
     private bool _isKnockedDown;
     private bool _isGettingUp;

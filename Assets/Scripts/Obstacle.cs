@@ -10,6 +10,8 @@ public class Obstacle : MonoBehaviour
     public ObstacleStats stats;
 
     public GameObject brokenPrefab;
+
+    public Outline outline;
     
     public UnityEvent OnPickup;
     public UnityEvent OnPlace;
@@ -22,36 +24,53 @@ public class Obstacle : MonoBehaviour
     private bool _isBeingGrabbed;
     private bool _isGrounded;
     private float _floorHeight;
+    private bool _playerInRange;
+    private Player _player;
 
     // Start is called before the first frame update
     void Start()
     {
         health = stats.health;
+        outline.enabled = false;
     }
 
     void Update()
     {
-        if (_isBeingGrabbed && !Input.GetKey("e"))
+        
+        if (_playerInRange && !_isBeingGrabbed && Input.GetKeyDown("e"))
+        {
+            Pickup();
+        } else if (_isBeingGrabbed && (!_playerInRange || Input.GetKeyDown("e")))
         {
             Place();
         }
-        
-        // if (!_isGrounded || (_floorHeight != 0 && transform.position.y > _floorHeight))
-        // {
-        //     transform.position -= Vector3.up * Time.deltaTime * 3f;
-        // }
+
+        if (_isBeingGrabbed)
+        {
+            transform.position = _player.pickupPoint.position;
+            transform.rotation = _player.pickupPoint.rotation;
+        }
     }
 
     public void Pickup()
     {
-        OnPickup.Invoke();
+        if (_player == null) _player = Player.Instance;
+        outline.enabled = true;
         _isBeingGrabbed = true;
-        transform.parent = Player.Instance.characterRoot.transform;
+        transform.position = _player.pickupPoint.position;
+        transform.rotation = _player.pickupPoint.rotation;
+        transform.parent = _player.pickupPoint;
+        
+        OnPickup.Invoke();
     }
     
     public void Place()
     {
+        if (_player == null) _player = Player.Instance;
+        outline.enabled = false;
         _isBeingGrabbed = false;
+        transform.position = _player.placePoint.position;
+        transform.rotation = _player.placePoint.rotation;
         transform.parent = null;
         OnPlace.Invoke();
     }
@@ -79,15 +98,19 @@ public class Obstacle : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == Player.Instance.gameObject)
         {
-            if (Input.GetKey("e") && !_isBeingGrabbed)
-            {
-                Pickup();
-                
-            }
+            _playerInRange = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject == Player.Instance.gameObject)
+        {
+            _playerInRange = false;
         }
     }
 }

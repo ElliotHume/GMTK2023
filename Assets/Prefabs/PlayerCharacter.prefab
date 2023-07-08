@@ -1308,6 +1308,8 @@ Transform:
   m_Children:
   - {fileID: 2470554597956979923}
   - {fileID: 2470554597956979877}
+  - {fileID: 2216387893664359862}
+  - {fileID: 601623725096515372}
   m_Father: {fileID: 2470554598119490481}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2118,12 +2120,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73e5950ab02e43147a3837e16f8e8678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
-  turnSpeed: 8
+  speed: 2
+  turnSpeed: 10
   floorHeight: 0.25
   animator: {fileID: 2470554597966078769}
   characterRoot: {fileID: 2470554597956554993}
   characterController: {fileID: 1158217058}
+  pickupPoint: {fileID: 2216387893664359862}
+  placePoint: {fileID: 601623725096515372}
   OnHitByBowlingBall:
     m_PersistentCalls:
       m_Calls:
@@ -2253,3 +2257,65 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &4099491496717737348
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 601623725096515372}
+  m_Layer: 0
+  m_Name: PlacePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &601623725096515372
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4099491496717737348}
+  m_LocalRotation: {x: -0, y: -0.000000014901159, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2.1956525}
+  m_LocalScale: {x: 6.2199845, y: 6.2199845, z: 6.2199845}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2470554597956979921}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6328909260290530179
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2216387893664359862}
+  m_Layer: 0
+  m_Name: PickupPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2216387893664359862
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6328909260290530179}
+  m_LocalRotation: {x: -0, y: -0.000000014901159, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 4.540589, z: 0}
+  m_LocalScale: {x: 6.2199845, y: 6.2199845, z: 6.2199845}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2470554597956979921}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

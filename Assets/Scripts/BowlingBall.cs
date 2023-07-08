@@ -123,7 +123,7 @@ public class BowlingBall : MonoBehaviour
         } else if (tag == "Obstacle")
         {
             OnCollide.Invoke();
-            
+
             if (damage > 0)
             {
                 Obstacle obstacle = collisionGO.GetComponent<Obstacle>();
@@ -134,6 +134,10 @@ public class BowlingBall : MonoBehaviour
             if (damage <= 0)
             {
                 Ricochet(collision.contacts[0].normal);
+                health -= 1;
+                
+                if (health <= 0)
+                    Break();
             }
         } else if (tag == "NPC")
         {
