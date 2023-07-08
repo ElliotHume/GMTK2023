@@ -2043,7 +2043,7 @@ MonoBehaviour:
   pickupRadius: 0.5
   timeToPickup: 2
   pickupSlider: {fileID: 1528990186745502586}
-  deathPrefab: {fileID: 111372, guid: 87738b5a38cb9d34aaa6cbf49c05e518, type: 3}
+  deathPrefab: {fileID: 0}
   OnPickedUp:
     m_PersistentCalls:
       m_Calls:
