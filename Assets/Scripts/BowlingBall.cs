@@ -84,16 +84,18 @@ public class BowlingBall : MonoBehaviour
         spinningModel.transform.LookAt(movementDirection);
         spinningModel.transform.RotateAround(spinningModel.transform.position, spinningModel.transform.right, spinningMultiplier * stats.speed * Time.deltaTime);
 
-        if (!_isGrounded || (_floorHeight != 0 && transform.position.y > _floorHeight))
+        if (!_isGrounded || (_floorHeight != 0 && Math.Abs(transform.position.y - _floorHeight) > 0.01f))
         {
             transform.position -= Vector3.up * Time.deltaTime * 3f;
+            if (_floorHeight != 0 && transform.position.y < _floorHeight)
+                transform.position += Vector3.up * (_floorHeight - transform.position.y);
         }
     }
 
-    private void Ricochet(Vector3 hitNormal)
+    private void Ricochet(Vector3 hitNormal, float bounciness = 1f)
     {
         _isBumped = true;
-        _ricochetDirection = hitNormal;
+        _ricochetDirection = hitNormal * bounciness;
     }
 
     private void Gutter(Transform gutter)
@@ -132,16 +134,22 @@ public class BowlingBall : MonoBehaviour
         {
             OnCollide.Invoke();
 
+            Obstacle obstacle = collisionGO.GetComponent<Obstacle>();
             if (damage > 0)
             {
-                Obstacle obstacle = collisionGO.GetComponent<Obstacle>();
                 int damageDealt = obstacle.Hit(damage);
                 damage -= damageDealt;
+
+                // bouncy obstacles still bounce even if they dont break the ball
+                if (obstacle.bounciness > 5 && damage > 0)
+                {
+                    Ricochet(collision.contacts[0].normal, obstacle.bounciness);
+                } 
             }
             
             if (damage <= 0)
             {
-                Ricochet(collision.contacts[0].normal);
+                Ricochet(collision.contacts[0].normal, obstacle.bounciness);
                 health -= 1;
                 
                 if (health <= 0)

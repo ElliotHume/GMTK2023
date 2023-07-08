@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1083581003861451028}
   m_Layer: 0
   m_Name: MassiveBowlingBall
-  m_TagString: Untagged
+  m_TagString: BowlingBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80,7 +80,7 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: 4526dc401046b3b4884b3fcf0b19890f, type: 2}
   spinningModel: {fileID: 5462372742077854868}
   spinningMultiplier: 100
-  bounceMultiplier: 0.2
+  bounceMultiplier: 2
   breakEffectPrefab: {fileID: 6522152114310683227, guid: c5f853e518f438a47b5f4dfe8cfb7306, type: 3}
   renderer: {fileID: 5447373563769590044}
   damagedTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
@@ -118,7 +118,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8909f7be147eea44e9745408fdef787a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 10485b9efe2bd994f98d392f91dd1a0a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

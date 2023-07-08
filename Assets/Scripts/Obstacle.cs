@@ -24,6 +24,8 @@ public class Obstacle : MonoBehaviour
     [HideInInspector]
     public int health;
 
+    public float bounciness => stats.bounciness;
+
     private bool _isBeingGrabbed;
     private bool _isGrounded;
     private float _floorHeight;
@@ -39,10 +41,10 @@ public class Obstacle : MonoBehaviour
 
     void Update()
     {
-        if (_playerInRange && !_isBeingGrabbed && Input.GetKeyDown("e"))
+        if (_playerInRange && !_isBeingGrabbed && Input.GetKeyDown("space"))
         {
             Pickup();
-        } else if (_isBeingGrabbed && (!_playerInRange || Input.GetKeyDown("e")))
+        } else if (_isBeingGrabbed && (!_playerInRange || Input.GetKeyDown("space")))
         {
             Place();
         }
