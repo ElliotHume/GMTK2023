@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1083581003861451028}
   - component: {fileID: -7639374500208789486}
   - component: {fileID: -3584457881657928166}
+  - component: {fileID: 2726115995387685646}
   m_Layer: 0
   m_Name: MassiveBowlingBall
   m_TagString: BowlingBall
@@ -413,6 +414,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2726115995387685646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084631706114307367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 800686dccb430634187d1caa5bab5715, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 60
 --- !u!1 &5462372742077854868
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,6 +22,8 @@ public class NPC : MonoBehaviour
     public UnityEvent OnPickedUp;
     public UnityEvent OnKnockedOver;
     public UnityEvent OnDeath;
+
+    public SkinnedMeshRenderer renderer;
     
     [HideInInspector]
     public bool isKnockedOver;
@@ -85,6 +87,8 @@ public class NPC : MonoBehaviour
                 Instantiate(deathPrefab, transform.position, transform.rotation);
             if (pickupSlider != null)
                 pickupSlider.gameObject.SetActive(false);
+            if (renderer != null)
+                renderer.material.color = Color.red;
         }
     }
 

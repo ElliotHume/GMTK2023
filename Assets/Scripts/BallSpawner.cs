@@ -10,12 +10,20 @@ public class BallSpawner : MonoBehaviour
 
     public List<GameObject> ballPrefabs;
 
+    public float timeReductionPerMinute;
 
     private float _cooldown;
+
+    private float _minTime;
+    private float _maxTime;
+    private float _scalingTimeReduction;
+    
     // Start is called before the first frame update
     void Start()
     {
         _cooldown = Random.Range(minTimeBetweenBalls, maxTimeBetweenBalls);
+        _minTime = minTimeBetweenBalls;
+        _maxTime = maxTimeBetweenBalls;
     }
 
     // Update is called once per frame
@@ -29,14 +37,22 @@ public class BallSpawner : MonoBehaviour
             GameObject ballPrefab = ballPrefabs[randomBallIndex];
             Transform spawnAnchor = spawnAnchors[randomSpawnAnchorIndex];
             
-            GameObject newBall = Instantiate(ballPrefab, spawnAnchor.position, spawnAnchor.rotation);
+            Instantiate(ballPrefab, spawnAnchor.position, spawnAnchor.rotation);
 
-            _cooldown = Random.Range(minTimeBetweenBalls, maxTimeBetweenBalls);
+            _cooldown = Random.Range(_minTime, _maxTime);
         }
         else
         {
             _cooldown -= Time.deltaTime;
         }
-        
+
+        if (timeReductionPerMinute > 0f)
+        {
+            _minTime -= timeReductionPerMinute * 0.016f * Time.deltaTime;
+            _maxTime -= timeReductionPerMinute * 0.016f * Time.deltaTime;
+
+            _minTime = Mathf.Max(1f, _minTime);
+            _maxTime = Mathf.Max(1f, _maxTime);
+        }
     }
 }

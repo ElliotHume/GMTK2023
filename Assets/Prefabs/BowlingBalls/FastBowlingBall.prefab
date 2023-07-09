@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 5942384493465122633}
   - component: {fileID: 1689261850006334752}
   - component: {fileID: 971812423158934968}
+  - component: {fileID: -3030879984843709538}
   m_Layer: 0
   m_Name: FastBowlingBall
   m_TagString: BowlingBall
@@ -496,3 +497,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-3030879984843709538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5941183398085354362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 800686dccb430634187d1caa5bab5715, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 20
