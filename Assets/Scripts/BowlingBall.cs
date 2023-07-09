@@ -19,7 +19,8 @@ public class BowlingBall : MonoBehaviour
     public Color damagedTint = Color.gray;
     
     public UnityEvent OnBreak;
-    public UnityEvent OnCollide;
+    public UnityEvent OnBallCollide;
+    public UnityEvent OnObstacleCollide;
     public UnityEvent OnGutter;
 
     private bool _isBumped;
@@ -132,7 +133,7 @@ public class BowlingBall : MonoBehaviour
             Gutter(collisionGO.transform);
         } else if (tag == "Obstacle")
         {
-            OnCollide.Invoke();
+            OnObstacleCollide.Invoke();
 
             Obstacle obstacle = collisionGO.GetComponent<Obstacle>();
             if (damage > 0)
@@ -157,7 +158,7 @@ public class BowlingBall : MonoBehaviour
             }
         } else if (tag == "NPC")
         {
-            OnCollide.Invoke();
+            OnObstacleCollide.Invoke();
             
             NPC npc = collisionGO.GetComponent<NPC>();
             npc.Hit();
@@ -167,7 +168,7 @@ public class BowlingBall : MonoBehaviour
             Ricochet(collision.contacts[0].normal);
         } else if (tag == "BowlingBall")
         {
-            OnCollide.Invoke();
+            OnBallCollide.Invoke();
             
             BowlingBall ball = collisionGO.GetComponent<BowlingBall>();
             
@@ -176,7 +177,7 @@ public class BowlingBall : MonoBehaviour
             Ricochet(collision.contacts[0].normal);
         } else if (tag == "Player")
         {
-            OnCollide.Invoke();
+            OnObstacleCollide.Invoke();
             
             Player player = collisionGO.GetComponent<Player>();
             player.BowlingBallHit();

@@ -42,11 +42,11 @@ public class Obstacle : MonoBehaviour
     void Update()
     {
         if (_playerInRange && !_isBeingGrabbed && Input.GetKeyDown("space"))
-        {
+        { 
             Pickup();
         } else if (_isBeingGrabbed && (!_playerInRange || Input.GetKeyDown("space")))
         {
-            Place();
+             Place();
         }
 
         if (_isBeingGrabbed)
@@ -98,7 +98,6 @@ public class Obstacle : MonoBehaviour
 
         if (health <= 2 && renderer != null)
         {
-            Debug.Log("Change to damaged tint");
             renderer.material.color = damagedTint;
         }
 
