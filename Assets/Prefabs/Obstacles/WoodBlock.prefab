@@ -391,7 +391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 30c9bae347762624cb89536c424916dc, type: 2}
-  brokenPrefab: {fileID: 0}
+  brokenPrefab: {fileID: 6522152114310683227, guid: e92b79bf43aef1842a501a783b88b2f1, type: 3}
   outline: {fileID: 501085282}
   renderer: {fileID: 5750025314247822479}
   damagedTint: {r: 1, g: 0, b: 0, a: 1}

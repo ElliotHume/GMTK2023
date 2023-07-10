@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 9429
+  controlID: 12673
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 9403
+  controlID: 12674
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 9404
+  controlID: 12642
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -226,7 +226,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: ca89feff0ca5feffe0a5feffa0b1feffacb9feff46b6ffff06bdffffbebdffff8ac9ffff94d1ffff2efbffff
+      m_ExpandedIDs: e8abfdffd0b7fdffa6bcfdff7abdfdff46c9fdff5cd1fdffb421feff8822feff522efeff6836feffca89feff0ca5feffe0a5feffa0b1feffacb9feff46b6ffff06bdffffbebdffff8ac9ffff94d1ffff2efbffff829c0100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -536,9 +536,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 10.771096, y: -7.7553473, z: -11.972298}
+    m_Target: {x: 542.85077, y: 635.66425, z: -133.76111}
     speed: 2
-    m_Value: {x: 10.771096, y: -7.7553473, z: -11.972298}
+    m_Value: {x: 542.85077, y: 635.66425, z: -133.76111}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -585,13 +585,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.071946755, y: 0.91190153, z: -0.3608562, w: 0.18181768}
+    m_Target: {x: 0.07770504, y: 0.9217089, z: -0.28543067, w: 0.2509295}
     speed: 2
-    m_Value: {x: 0.071946196, y: 0.91189444, z: -0.3608534, w: 0.18181626}
+    m_Value: {x: 0.077704206, y: 0.921699, z: -0.2854276, w: 0.25092682}
   m_Size:
-    m_Target: 12.124355
+    m_Target: 570.97797
     speed: 2
-    m_Value: 12.124355
+    m_Value: 570.97797
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -716,8 +716,8 @@ MonoBehaviour:
     y: 567
     width: 1380
     height: 380
-  m_MinSize: {x: 231, y: 271}
-  m_MaxSize: {x: 10001, y: 10021}
+  m_MinSize: {x: 230, y: 250}
+  m_MaxSize: {x: 10000, y: 10000}
   m_ActualView: {fileID: 11}
   m_Panes:
   - {fileID: 11}
@@ -765,21 +765,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/BowlingBalls
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Prefabs/BowlingBalls
+  - Assets/Scenes
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\ellio\Documents\Git\GMTK2023
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 36c00000
-    m_LastClickedID: 49206
+    m_SelectedIDs: 04700000
+    m_LastClickedID: 28676
     m_ExpandedIDs: 000000000a6e00000c6e00000e6e0000106e0000126e0000146e0000166e0000186e00001a6e00001c6e00001e6e0000206e0000226e0000246e0000266e0000286e00002a6e00002c6e00002e6e0000306e00000070000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -833,8 +833,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: a66d0000
+    m_LastClickedInstanceID: 28070
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000328d0600
     m_RenameOverlay:
@@ -885,9 +885,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 635
+    y: 640
     width: 1379
-    height: 364
+    height: 359
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -952,7 +952,7 @@ MonoBehaviour:
     m_CachedPref: 231
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: -1
+  m_LastInspectedObjectInstanceID: 28070
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0

@@ -59,14 +59,14 @@ public class Obstacle : MonoBehaviour
     public void Pickup()
     {
         if (_player == null) _player = Player.Instance;
-        if (_player.isHoldingObstacle) return;
+        if (_player.heldObstacle != null) return;
         outline.enabled = true;
         _isBeingGrabbed = true;
         transform.position = _player.pickupPoint.position;
         transform.rotation = _player.pickupPoint.rotation;
         transform.parent = _player.pickupPoint;
 
-        _player.isHoldingObstacle = true;
+        _player.heldObstacle = gameObject;
         
         OnPickup.Invoke();
     }
@@ -80,7 +80,7 @@ public class Obstacle : MonoBehaviour
         transform.rotation = _player.placePoint.rotation;
         transform.parent = null;
         
-        _player.isHoldingObstacle = false;
+        _player.heldObstacle = null;
         OnPlace.Invoke();
     }
 
@@ -109,6 +109,10 @@ public class Obstacle : MonoBehaviour
         OnBreak.Invoke();
         if (brokenPrefab != null)
             Instantiate(brokenPrefab, transform.position, transform.rotation);
+        if (_player != null && _player.heldObstacle == gameObject)
+        {
+            _player.heldObstacle = null;
+        }
         Destroy(gameObject);
     }
 

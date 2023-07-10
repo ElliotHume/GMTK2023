@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     private bool _isGettingUp;
 
     [HideInInspector]
-    public bool isHoldingObstacle;
+    public GameObject heldObstacle;
     
     public bool canMove => !_isKnockedDown && !_isGettingUp; 
 
